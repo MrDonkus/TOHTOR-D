@@ -14,7 +14,6 @@ namespace TownOfHost
             WaitTime = 4,
             ReadyFire = 8,
             FireEnd = 16,
-            CanUseKill = Initial | FireEnd
         }
         static readonly int Id = 1700;
 
@@ -33,7 +32,7 @@ namespace TownOfHost
         {
             Options.SetupRoleOptions(Id, CustomRoles.FireWorks, AmongUsExtensions.OptionType.Impostor);
             FireWorksCount = CustomOption.Create(Id + 10, Color.white, "FireWorksMaxCount", AmongUsExtensions.OptionType.Impostor, 1f, 1f, 3f, 1f, Options.CustomRoleSpawnChances[CustomRoles.FireWorks]);
-            FireWorksRadius = CustomOption.Create(Id + 11, Color.white, "FireWorksRadius", AmongUsExtensions.OptionType.Impostor, 1f, 0.5f, 3f, 0.5f, Options.CustomRoleSpawnChances[CustomRoles.FireWorks]);
+            FireWorksRadius = CustomOption.Create(Id + 11, Color.white, "FireWorksRadius", AmongUsExtensions.OptionType.Impostor, 1f, 0.5f, 4f, 0.5f, Options.CustomRoleSpawnChances[CustomRoles.FireWorks]);
         }
 
         public static void Init()
@@ -70,19 +69,6 @@ namespace TownOfHost
             nowFireWorksCount[playerId] = msg.ReadInt32();
             state[playerId] = (FireWorksState)msg.ReadInt32();
             Logger.Info($"Player{playerId}:ReceiveRPC", "FireWorks");
-        }
-
-        public static bool CanUseKillButton(PlayerControl pc)
-        {
-            //            Logger.Info($"FireWorks CanUseKillButton", "FireWorks");
-            if (pc.Data.IsDead) return false;
-            var canUse = false;
-            if ((state[pc.PlayerId] & FireWorksState.CanUseKill) != 0)
-            {
-                canUse = true;
-            }
-            //            Logger.Info($"CanUseKillButton:{canUse}", "FireWorks");
-            return canUse;
         }
 
         public static void ShapeShiftState(PlayerControl pc, bool shapeshifting)

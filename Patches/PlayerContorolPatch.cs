@@ -120,12 +120,6 @@ namespace TownOfHost
                             Logger.Info(killer?.Data?.PlayerName + " is Mafia and can now kill.", "CheckMurder");
                         }
                         break;
-                    case CustomRoles.FireWorks:
-                        if (!killer.CanUseKillButton())
-                        {
-                            return false;
-                        }
-                        break;
                     case CustomRoles.Sniper:
                         if (!killer.CanUseKillButton())
                         {

@@ -304,6 +304,7 @@ namespace TownOfHost
                 case CustomRoles.Vampress:
                     PlayerControl.LocalPlayer.Data.Role.IntroSound = GetIntroSound(RoleTypes.Shapeshifter);
                     break;
+                case CustomRoles.Creeper:
 
                 case CustomRoles.SabotageMaster:
                     PlayerControl.LocalPlayer.Data.Role.IntroSound = ShipStatus.Instance.SabotageSound;

@@ -159,6 +159,10 @@ namespace TownOfHost
             return
                 role is CustomRoles.Opportunist or
                     CustomRoles.Survivor or
+                    CustomRoles.Jester or
+                    CustomRoles.Executioner or
+                    CustomRoles.Vulture or
+                    CustomRoles.JugSchrodingerCat or
                     CustomRoles.SchrodingerCat or
                     CustomRoles.GuardianAngelTOU or
                     CustomRoles.Amnesiac;
@@ -168,6 +172,7 @@ namespace TownOfHost
             return
                 role is CustomRoles.Jester or
                 CustomRoles.Terrorist or
+                CustomRoles.SabotageMaster or
                 CustomRoles.GuardianAngelTOU;
         }
         public static bool IsNeutralKilling(this CustomRoles role)
@@ -411,6 +416,7 @@ namespace TownOfHost
                 CustomRoles.Miner or
                 CustomRoles.Escapist or
                 CustomRoles.TheGlitch or
+                CustomRoles.Creeper or
                 CustomRoles.Transporter;
         }
         public static bool IsEngineer(this CustomRoles role)
@@ -426,6 +432,7 @@ namespace TownOfHost
                 CustomRoles.Survivor or
                 CustomRoles.Madmate or
                 CustomRoles.Bastion or
+                CustomRoles.SabotageMaster or
                 CustomRoles.Mechanic or
                 CustomRoles.Terrorist or
                 CustomRoles.GuardianAngelTOU;

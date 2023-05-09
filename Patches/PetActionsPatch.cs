@@ -85,7 +85,7 @@ class ExternalRpcPetPatch
                 if (target.Is(CustomRoles.Pestilence)) continue;
 
                 var dis = Vector2.Distance(playerControl.transform.position, target.transform.position);
-                if (dis > 3f) continue;
+                if (dis > 4f) continue;
 
                 if (target == playerControl)
                 {

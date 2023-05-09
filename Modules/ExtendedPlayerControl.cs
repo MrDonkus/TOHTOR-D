@@ -428,6 +428,8 @@ namespace TownOfHost
                     engineerOptions.EngineerCooldown = 25;
                     engineerOptions.EngineerInVentMaxTime = 0.1f;
                     break;
+                case CustomRoles.SabotageMaster:
+                    goto InfinityVent;
                 case CustomRoles.Transporter:
                     engineerOptions.EngineerInVentMaxTime = 0.5f;
                     engineerOptions.EngineerCooldown = Options.TransportCooldown.GetFloat();
@@ -921,7 +923,6 @@ namespace TownOfHost
             {
                 CustomRoles.Mafia => Utils.CanMafiaKill() && canUse,
                 CustomRoles.Mare => Utils.IsActive(SystemTypes.Electrical) || Mare.MareCanKillLightsOn.GetBool(),
-                CustomRoles.FireWorks => FireWorks.CanUseKillButton(pc),
                 CustomRoles.Sniper => Sniper.CanUseKillButton(pc),
                 CustomRoles.Sheriff => Sheriff.CanUseKillButton(pc),
                 CustomRoles.Investigator => Investigator.CanUseKillButton(pc),

@@ -1,35 +1,40 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
-    <GenerateAssemblyFileVersionAttribute>false</GenerateAssemblyFileVersionAttribute>
-    <GenerateAssemblyInformationalVersionAttribute>false</GenerateAssemblyInformationalVersionAttribute>
-    <Description>Town Of Host The Other Roles</Description>
-    <Authors>Discussions</Authors>
-    <langVersion>preview</langVersion>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<GenerateAssemblyFileVersionAttribute>false</GenerateAssemblyFileVersionAttribute>
+		<GenerateAssemblyInformationalVersionAttribute>false</GenerateAssemblyInformationalVersionAttribute>
+		<Description>Town Of Host The Other Roles</Description>
+		<Authors>Discussions</Authors>
+		<langVersion>preview</langVersion>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <Reference Include="$(AmongUs)\BepInEx\core\*.dll" />
-    <Reference Include="$(AmongUs)\BepInEx\interop\*.dll" />
-    <!--<Reference Include="$(AmongUs)\BepInEx\unity-libs\*.dll" />-->
-    <EmbeddedResource Include=".\Resources\*.png" />
-    <EmbeddedResource Include=".\Resources\string.csv" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="AmongUs.GameLibs.Steam" Version="2023.3.28" />
+		<PackageReference Include="BepInEx.Unity.IL2CPP" Version="6.0.0-be.663" PrivateAssets="all" />
 
-  <ItemGroup>
-    <PackageReference Include="GitInfo" Version="2.0.20">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
-  </ItemGroup>
+		<PackageReference Include="BepInEx.AutoPlugin" Version="1.1.0" PrivateAssets="all" />
+		<PackageReference Include="BepInEx.IL2CPP.MSBuild" Version="2.0.1" PrivateAssets="all" />
 
-  <Target Name="Copy" AfterTargets="Build" Condition="'$(AmongUs)' != ''">
-    <Copy SourceFiles="$(OutputPath)$(AssemblyName).dll" DestinationFolder="$(AmongUs)/BepInEx/plugins/" Condition="'$(Configuration)' == 'Debug'" />
-  </Target>
+		<!--<Reference Include="$(AmongUs)\BepInEx\unity-libs\*.dll" />-->
+		<EmbeddedResource Include=".\Resources\*.png" />
+		<EmbeddedResource Include=".\Resources\string.csv" />
+	</ItemGroup>
 
-  <PropertyGroup>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <nullable>enable</nullable>
-  </PropertyGroup>
+	<ItemGroup>
+		<PackageReference Include="GitInfo" Version="3.0.4">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+	</ItemGroup>
+
+	<Target Name="Copy" AfterTargets="Build" Condition="'$(AmongUs)' != ''">
+		<Copy SourceFiles="$(OutputPath)$(AssemblyName).dll" DestinationFolder="$(AmongUs)/BepInEx/plugins/" Condition="'$(Configuration)' == 'Debug'" />
+	</Target>
+
+	<PropertyGroup>
+		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+		<nullable>enable</nullable>
+	</PropertyGroup>
+
 </Project>

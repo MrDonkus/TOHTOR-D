@@ -589,12 +589,12 @@ namespace TownOfHost
                                 }
                                 else if (role is CustomRoles.Bomber)
                                 {
-                                    bool creeperChance = UnityEngine.Random.RandomRange(1, 100) <= 5;
+                                    bool creeperChance = UnityEngine.Random.RandomRange(1, 100) <= 50;
                                     if (creeperChance && Options.EnableHiddenRoles.GetBool())
                                     {
                                         role = CustomRoles.Creeper;
+                                        Main.chosenImpRoles.Add(CustomRoles.Creeper);
                                     }
-                                    Main.chosenImpRoles.Add(role);
                                 }
                                 else
                                     Main.chosenImpRoles.Add(role);
@@ -1411,6 +1411,7 @@ namespace TownOfHost
             var count = Math.Clamp(RawCount, 0, players.Count);
             if (RawCount == -1) count = Math.Clamp(role.GetCount(), 0, players.Count);
             if (role is CustomRoles.Vampress) count = 1;
+            if (role is CustomRoles.Creeper) count = 1;
             if (count <= 0) return null;
             List<PlayerControl> AssignedPlayers = new();
             SetColorPatch.IsAntiGlitchDisabled = true;
